@@ -10,6 +10,7 @@ import { getArguments } from './utils/getArguments.js';
 import { up } from './commands/up.js';
 import { cd } from './commands/cd.js';
 import { ls } from './commands/ls.js';
+import { cat } from './commands/cat.js';
 
 const input = process.stdin;
 const output = process.output;
@@ -44,6 +45,10 @@ const start = () => {
 
       case 'ls':
         ls(process);
+        break;
+
+      case 'cat':
+        cat(...argument);
         break;
     }
 
