@@ -4,6 +4,10 @@ import readline from 'node:readline';
 import { printMessage } from './utils/printMessage.js';
 import { getUsername } from './utils/getUsername.js';
 import { getCurWorkingDir } from './utils/getCurWorkingDir.js';
+import { getOperation } from './utils/getOperation.js';
+import { getArguments } from './utils/getArguments.js';
+
+import { up } from './operations/up.js';
 
 const input = process.stdin;
 const output = process.output;
@@ -14,16 +18,26 @@ const args = process.argv;
 const username = getUsername(args.slice(2));
 const homedir = os.homedir();
 process.chdir(homedir);
-const curWorkDir = getCurWorkingDir(process);
 
 const start = () => {
   printMessage(`Welcome to the File Manager, ${username}!`);
-  printMessage(curWorkDir);
+  printMessage(getCurWorkingDir());
 
   rl.on('line', (input) => {
     if (input === '.exit') {
-      rl.close();
+      return rl.close();
     }
+
+    const operation = getOperation(input);
+    const opArguments = getArguments(input);
+
+    switch (operation) {
+      case 'up':
+        up(process);
+        break;
+    }
+
+    printMessage(getCurWorkingDir());
   });
 
   rl.on('close', () => {
