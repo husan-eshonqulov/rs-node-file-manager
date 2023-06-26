@@ -2,6 +2,7 @@ import readline from 'node:readline';
 
 import { printMessage } from './utils/printMessage.js';
 import { getUsername } from './utils/getUsername.js';
+import { getCurWorkingDir } from './utils/getCurWorkingDir.js';
 
 const input = process.stdin;
 const output = process.output;
@@ -10,9 +11,12 @@ const rl = readline.createInterface({ input, output });
 
 const args = process.argv;
 const username = getUsername(args.slice(2));
+const curWorkDir = getCurWorkingDir(process);
 
 const start = () => {
   printMessage(`Welcome to the File Manager, ${username}!`);
+  printMessage(curWorkDir);
+
   rl.on('line', (input) => {
     if (input === '.exit') {
       rl.close();
@@ -24,7 +28,7 @@ const start = () => {
   });
 
   process.on('SIGINT', () => {
-    printMessage();
+    printMessage('');
     rl.close();
   });
 };
