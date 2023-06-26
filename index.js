@@ -1,3 +1,4 @@
+import os from 'node:os';
 import readline from 'node:readline';
 
 import { printMessage } from './utils/printMessage.js';
@@ -11,6 +12,8 @@ const rl = readline.createInterface({ input, output });
 
 const args = process.argv;
 const username = getUsername(args.slice(2));
+const homedir = os.homedir();
+process.chdir(homedir);
 const curWorkDir = getCurWorkingDir(process);
 
 const start = () => {
