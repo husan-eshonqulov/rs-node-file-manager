@@ -11,6 +11,7 @@ import { up } from './commands/up.js';
 import { cd } from './commands/cd.js';
 import { ls } from './commands/ls.js';
 import { cat } from './commands/cat.js';
+import { rm } from './commands/rm.js';
 
 const input = process.stdin;
 const output = process.output;
@@ -49,6 +50,10 @@ const start = () => {
 
       case 'cat':
         cat(...argument);
+        break;
+
+      case 'rm':
+        rm(...argument);
         break;
     }
 
