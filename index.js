@@ -9,6 +9,7 @@ import { getArguments } from './utils/getArguments.js';
 
 import { up } from './commands/up.js';
 import { cd } from './commands/cd.js';
+import { ls } from './commands/ls.js';
 
 const input = process.stdin;
 const output = process.output;
@@ -22,7 +23,7 @@ process.chdir(homedir);
 
 const start = () => {
   printMessage(`Welcome to the File Manager, ${username}!`);
-  printMessage(getCurWorkingDir());
+  printMessage(getCurWorkingDir(process));
 
   rl.on('line', (input) => {
     if (input === '.exit') {
@@ -38,11 +39,15 @@ const start = () => {
         break;
 
       case 'cd':
-        cd(...argument);
+        cd(process, ...argument);
+        break;
+
+      case 'ls':
+        ls(process);
         break;
     }
 
-    printMessage(getCurWorkingDir());
+    printMessage(getCurWorkingDir(process));
   });
 
   rl.on('close', () => {

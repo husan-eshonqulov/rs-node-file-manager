@@ -1,4 +1,4 @@
-const up = () => {
+const up = (process) => {
   process.chdir('..');
 };
 

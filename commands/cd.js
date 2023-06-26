@@ -1,4 +1,4 @@
-const cd = (path) => {
+const cd = (process, path) => {
   process.chdir(path);
 };
 
