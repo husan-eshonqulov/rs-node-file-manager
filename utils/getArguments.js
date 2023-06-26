@@ -1,0 +1,3 @@
+const getArguments = () => {};
+
+export { getArguments };

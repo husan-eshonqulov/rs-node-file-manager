@@ -1,4 +1,4 @@
-const getCurWorkingDir = (process) => {
+const getCurWorkingDir = () => {
   return process.cwd();
 };
 
