@@ -13,6 +13,7 @@ import { ls } from './commands/ls.js';
 import { cat } from './commands/cat.js';
 import { mv } from './commands/mv.js';
 import { rm } from './commands/rm.js';
+import { osCom } from './commands/os.js';
 import { hash } from './commands/hash.js';
 import { compress } from './commands/compress.js';
 import { decompress } from './commands/decompress.js';
@@ -62,6 +63,10 @@ const start = () => {
 
       case 'rm':
         rm(...argument);
+        break;
+
+      case 'os':
+        osCom(...argument);
         break;
 
       case 'hash':
