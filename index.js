@@ -7,7 +7,8 @@ import { getCurWorkingDir } from './utils/getCurWorkingDir.js';
 import { getOperation } from './utils/getOperation.js';
 import { getArguments } from './utils/getArguments.js';
 
-import { up } from './operations/up.js';
+import { up } from './commands/up.js';
+import { cd } from './commands/cd.js';
 
 const input = process.stdin;
 const output = process.output;
@@ -29,11 +30,15 @@ const start = () => {
     }
 
     const operation = getOperation(input);
-    const opArguments = getArguments(input);
+    const argument = getArguments(input);
 
     switch (operation) {
       case 'up':
         up(process);
+        break;
+
+      case 'cd':
+        cd(...argument);
         break;
     }
 
