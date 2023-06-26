@@ -15,6 +15,7 @@ import { mv } from './commands/mv.js';
 import { rm } from './commands/rm.js';
 import { hash } from './commands/hash.js';
 import { compress } from './commands/compress.js';
+import { decompress } from './commands/decompress.js';
 
 const input = process.stdin;
 const output = process.output;
@@ -69,6 +70,10 @@ const start = () => {
 
       case 'compress':
         compress(...argument);
+        break;
+
+      case 'decompress':
+        decompress(...argument);
         break;
     }
 
